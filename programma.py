@@ -115,7 +115,7 @@ if ambient_noise:
             print("\tInserisci un numero valido")
 
 
-nome_output=input("Inserisci il nome del file dove vuoi vengano salvati i testi (l'estensione verrà impostata automaticamnete come .txt)\n>")
+nome_output=input("Inserisci il nome del file dove vuoi vengano salvati i testi (l'estensione verrà impostata automaticamente come .txt)\n>")
 
 print("──────\n┌Inizio dell'importazione del file audio")
 file_audio=AudioSegment.from_file(dir_path+nome_input,format=original_file[1])
@@ -163,10 +163,10 @@ for audio_chunk in chunks_of_audio:
                     output_file.write("[TRASCRIZIONE FALLITA PER AUDIO %s.%s-chunk-%i.wav]"%(original_file[0],original_file[1],i+1)+settings_dict["Section end"])
                     failed+=1
         print("│\t│\t└Fine trascrizione audio")
-        try:
-            os.remove(program_path+"temp_files/chunk%i.wav"%(i))
-        except:
-            pass
+    try:
+        os.remove(program_path+"temp_files/chunk%i.wav"%(i))
+    except:
+        pass
     print("│\t└Fine elaborazione del segmento")
     i+=1
 input("└Fine elaborazione dei segmenti. Il risultato è stato salvato in %s.txt\nA causa di problemi di connessione o di file troppo estesi, non è stato possibile trascrivere %i file.\nSi possono ascoltare i file non trascritti nella cartella failed_files\nPremere invio per chiudere il programma"%(nome_output,failed))
